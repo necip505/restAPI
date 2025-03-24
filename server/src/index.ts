@@ -20,17 +20,16 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 
-app.use(router());
+app.use('/', router());
 
+const PORT = 8081;
 const server = http.createServer(app);
-
 const MONGO_URL = process.env.DATABASE_URL;
 
-server.listen(8080, () => {
-    console.log('Server is running on http://localhost:8080');
+server.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
 mongoose.connection.on('error', (error: Error) => console.log(error));
-app.use('/',router());

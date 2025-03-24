@@ -2,7 +2,7 @@ import express from 'express';
 import { get, merge } from 'lodash';
 import { getUserBySessionToken } from '../db/users';
 
-export const isAtuhenticated = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
+export const isAuthenticated = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     try {
         const sessionToken = req.cookies['NWAYCE-AUTH'];
         if (!sessionToken) {
